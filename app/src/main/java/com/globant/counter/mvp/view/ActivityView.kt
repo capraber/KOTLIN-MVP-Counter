@@ -7,7 +7,7 @@ import android.content.Context
 import java.lang.ref.WeakReference
 
 open class ActivityView(activity: Activity) {
-    private val activityRef: WeakReference<Activity>
+    private val activityRef: WeakReference<Activity> = WeakReference(activity)
 
     val activity: Activity?
         get() = activityRef.get()
@@ -21,7 +21,4 @@ open class ActivityView(activity: Activity) {
             return activity?.fragmentManager
         }
 
-    init {
-        activityRef = WeakReference(activity)
-    }
 }
