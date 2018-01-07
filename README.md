@@ -8,3 +8,7 @@ Simple MVP example
 
 ## Environment set up
 - [Install AS](https://developer.android.com/studio/install.html?hl=es-419)
+
+## Language documentation
+- [KOTLIN References](https://kotlinlang.org/docs/reference/)
+- [KOTLIN Full documentation](https://kotlinlang.org/docs/kotlin-docs.pdf)
