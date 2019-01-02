@@ -4,8 +4,6 @@ import com.globant.counter.mvp.model.CountModel
 import com.globant.counter.mvp.presenter.CountPresenter
 import com.globant.counter.mvp.view.CountView
 import com.globant.counter.utils.bus.RxBus
-import com.globant.counter.utils.bus.observer.OnCountButtonPressedBusObserver
-import com.globant.counter.utils.bus.observer.OnResetButtonPressedBusObserver
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
