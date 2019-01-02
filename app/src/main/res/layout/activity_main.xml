@@ -1,29 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/activity_main"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical">
-
     <TextView
-        android:id="@+id/count_label"
-        android:layout_width="wrap_content"
-        android:textSize="40sp"
+        android:id="@+id/text_expression"
+
+        android:hint="@string/values"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+
+    <EditText
+        android:id="@+id/input_number"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="0"/>
+        android:inputType="numberDecimal" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" />
+
+
+    >
 
     <Button
-        android:id="@+id/count_button"
+        android:id="@+id/btn_sum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="inc"/>
+        android:text="+" />
 
     <Button
-        android:id="@+id/reset_button"
+        android:id="@+id/btn_rest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="reset"/>
+        android:text="-" />
 
+    <Button
+        android:id="@+id/btn_multi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*" />
+
+    <Button
+        android:id="@+id/btn_div"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="/" />
+
+
+    <Button
+        android:id="@+id/btn_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="C" />
+
+    <Button
+        android:id="@+id/btn_equal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="=" />
 </LinearLayout>
+
+
