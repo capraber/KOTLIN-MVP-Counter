@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity
 import com.globant.counter.mvp.model.CountModel
 import com.globant.counter.mvp.presenter.CountPresenter
 import com.globant.counter.mvp.view.CountView
-import com.globant.counter.utils.bus.RxBus
-
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,9 +16,15 @@ class MainActivity : AppCompatActivity() {
         presenter = CountPresenter(CountModel(), CountView(this))
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        RxBus.clear(this)
+    override fun onResume() {
+        super.onResume()
+        presenter?.initPresenter()
     }
 
+    override fun onDestroy() {
+        presenter?.disposeObservers()
+        // Call on destroy after doing what you have to do with the presenter because it may cause unwanted exceptions
+        // in the view
+        super.onDestroy()
+    }
 }

@@ -3,10 +3,9 @@ package com.globant.counter
 import com.globant.counter.mvp.model.CountModel
 import com.globant.counter.mvp.presenter.CountPresenter
 import com.globant.counter.mvp.view.CountView
-import com.globant.counter.utils.bus.RxBus
-import com.globant.counter.utils.bus.observer.OnCountButtonPressedBusObserver
-import com.globant.counter.utils.bus.observer.OnResetButtonPressedBusObserver
-import org.junit.Assert.assertEquals
+import com.globant.counter.rx.EventTypes
+import com.globant.counter.rx.EventTypes.RESET_COUNT_EVENT
+import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -17,7 +16,8 @@ import org.mockito.Mockito.`when` as whenever
 class PresenterTest {
 
     private var presenter: CountPresenter? = null
-    private var model: CountModel? = null
+    @Mock
+    lateinit var model: CountModel // Mocking the model is to illustrate a non-trivial model
     @Mock
     lateinit var view: CountView
     @Mock
@@ -26,35 +26,33 @@ class PresenterTest {
     @Before
     fun setup() {
         MockitoAnnotations.initMocks(this)
-        model = CountModel()
         // When
         whenever(view.activity).thenReturn(activity)
 
-        presenter = CountPresenter(model!!, view)
+        presenter = CountPresenter(model, view)
     }
 
     @Test
     fun isShouldIncCountByOne() {
-        model!!.reset();
-        RxBus.post(OnCountButtonPressedBusObserver.OnCountButtonPressed())
+        val count = 1
+        whenever(model.count).thenReturn(count)
+        whenever(view.viewEventObservable).thenReturn(Observable.just(EventTypes.INCREMENT_EVENT))
+        presenter?.initPresenter()
 
-        val count = "1"
-        assertEquals(model!!.count, 1)
-        verify(view).setCount(count)
+        verify(model).inc()
+        verify(model).count
+        verify(view).setCount(count.toString())
     }
 
     @Test
-      fun isShouldResetCount() {
-        RxBus.post(OnCountButtonPressedBusObserver.OnCountButtonPressed())
-        RxBus.post(OnCountButtonPressedBusObserver.OnCountButtonPressed())
-        RxBus.post(OnCountButtonPressedBusObserver.OnCountButtonPressed())
-        var count = 3
-        assertEquals(model!!.count, count)
+    fun presenterResetModelTest() {
+        val countResetValue = 0
+        whenever(model.count).thenReturn(countResetValue)
+        whenever(view.viewEventObservable).thenReturn(Observable.just(RESET_COUNT_EVENT))
 
-        RxBus.post(OnResetButtonPressedBusObserver.OnResetButtonPressed())
-        count = 0
-        assertEquals(model!!.count, count)
-        val invocations = 4
-        verify(view, times(invocations)).setCount(anyString());
+        presenter?.initPresenter()
+        verify(model).reset()
+        verify(model).count
+        verify(view).setCount(countResetValue.toString())
     }
 }
