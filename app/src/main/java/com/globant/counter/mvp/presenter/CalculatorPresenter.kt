@@ -5,7 +5,7 @@ import com.globant.counter.mvp.view.CalculatorView
 import com.globant.counter.utils.bus.RxBus
 import com.globant.counter.utils.bus.observer.*
 
-class CountPresenter(val model: CalculatorModel, val view: CalculatorView) {
+class CalculatorPresenter(val model: CalculatorModel, val view: CalculatorView) {
 
     init {
 

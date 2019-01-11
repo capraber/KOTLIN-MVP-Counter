@@ -1,7 +1,7 @@
 package com.globant.counter
 
 import com.globant.counter.mvp.model.CalculatorModel
-import com.globant.counter.mvp.presenter.CountPresenter
+import com.globant.counter.mvp.presenter.CalculatorPresenter
 import com.globant.counter.mvp.view.CalculatorView
 import com.globant.counter.utils.bus.*
 import com.globant.counter.utils.bus.observer.*
@@ -17,7 +17,7 @@ import org.mockito.Mockito.`when` as whenever
 
 class PresenterTest {
 
-    private var presenter: CountPresenter? = null
+    private var presenter: CalculatorPresenter? = null
     private var model: CalculatorModel? = null
     @Mock
     lateinit var view: CalculatorView
@@ -30,7 +30,7 @@ class PresenterTest {
         model = CalculatorModel()
         // When
         whenever(view.activity).thenReturn(activity)
-        presenter = CountPresenter(model!!, view)
+        presenter = CalculatorPresenter(model!!, view)
     }
 
     @Test
