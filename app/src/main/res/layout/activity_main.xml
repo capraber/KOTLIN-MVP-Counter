@@ -1,29 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/activity_main"
-    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/count_label"
+        android:id="@+id/countLabel"
         android:layout_width="wrap_content"
-        android:textSize="40sp"
         android:layout_height="wrap_content"
-        android:text="0"/>
+        android:text="@string/txt_main_activity_starting_count_label_value"
+        android:textSize="40sp" />
 
     <Button
-        android:id="@+id/count_button"
+        android:id="@+id/countBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="inc"/>
+        android:text="@string/txt_main_activity_count_btn_label" />
 
     <Button
-        android:id="@+id/reset_button"
+        android:id="@+id/resetBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="reset"/>
+        android:text="@string/txt_main_activity_reset_btn_label" />
 
 </LinearLayout>

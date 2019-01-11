@@ -2,31 +2,35 @@ package com.globant.counter.mvp.presenter
 
 import com.globant.counter.mvp.model.CountModel
 import com.globant.counter.mvp.view.CountView
-import com.globant.counter.utils.bus.RxBus
-import com.globant.counter.utils.bus.observer.OnCountButtonPressedBusObserver
-import com.globant.counter.utils.bus.observer.OnResetButtonPressedBusObserver
+import com.globant.counter.rx.EventTypes.INCREMENT_EVENT
+import com.globant.counter.rx.EventTypes.RESET_COUNT_EVENT
+import io.reactivex.disposables.CompositeDisposable
 
-class CountPresenter(model: CountModel, view: CountView) {
+class CountPresenter(private val model: CountModel, val view: CountView) {
 
-    init {
+    // If you are subscribing to events, always have a composite disposable to dispose of the observers and its references
+    // when the presenter is not needed anymore
+    private val compositeDisposable = CompositeDisposable()
 
-        val activity = view.activity
-        if (activity != null) {
-
-            RxBus.subscribe(activity, object : OnCountButtonPressedBusObserver() {
-                override fun onEvent(value: OnCountButtonPressedBusObserver.OnCountButtonPressed) {
-                    model.inc()
-                    view.setCount(model.count.toString())
+    // method created to illustrate testing, not always is a good idea to have a standalone init method
+    // we could have just the default kotlin init block
+    fun initPresenter() {
+        compositeDisposable.add(
+            view.viewEventObservable.subscribe { clickEvent ->
+                when (clickEvent) {
+                    INCREMENT_EVENT -> {
+                        model.inc()
+                    }
+                    RESET_COUNT_EVENT -> {
+                        model.reset()
+                    }
                 }
-            })
+                view.setCount(model.count.toString())
+            }
+        )
+    }
 
-            RxBus.subscribe(activity, object : OnResetButtonPressedBusObserver() {
-                override fun onEvent(value: OnResetButtonPressedBusObserver.OnResetButtonPressed) {
-                    model.reset()
-                    view.setCount(model.count.toString())
-                }
-            })
-        }
-
+    fun disposeObservers() {
+        compositeDisposable.clear()
     }
 }

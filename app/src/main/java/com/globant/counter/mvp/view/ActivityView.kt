@@ -20,5 +20,4 @@ open class ActivityView(activity: Activity) {
             val activity = activity
             return activity?.fragmentManager
         }
-
 }
