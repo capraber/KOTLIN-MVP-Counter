@@ -3,6 +3,7 @@ package com.globant.counter.mvp.view
 import android.app.Activity
 import com.globant.counter.rx.OnEqualsButtonPressedBusObserver
 import com.globant.counter.rx.OnNumberButtonPressedBusObserver
+import com.globant.counter.rx.OnOperationButtonPressedBusObserver
 import com.globant.counter.utils.RxBus
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -45,10 +46,20 @@ class CalculatorView(activity: Activity) : ActivityView(activity){
             RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(9))
         }
 
-        // Operation Listener
-        activity.resetBtn.setOnClickListener {
-            RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(9))
+        // Opertaion Listeners
+        activity.addBtn.setOnClickListener {
+            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed("+"))
         }
+        activity.substractBtn.setOnClickListener {
+            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed("-"))
+        }
+        activity.divBtn.setOnClickListener {
+            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed("/"))
+        }
+        activity.multiplyBtn.setOnClickListener {
+            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed("+"))
+        }
+
 
     }
 

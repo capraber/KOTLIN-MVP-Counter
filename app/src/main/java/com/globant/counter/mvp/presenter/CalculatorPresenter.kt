@@ -5,6 +5,7 @@ import com.globant.counter.mvp.model.CalculatorModel
 import com.globant.counter.mvp.view.CalculatorView
 import com.globant.counter.rx.OnEqualsButtonPressedBusObserver
 import com.globant.counter.rx.OnNumberButtonPressedBusObserver
+import com.globant.counter.rx.OnOperationButtonPressedBusObserver
 import com.globant.counter.utils.RxBus
 
 class  CalculatorPresenter(private  val  model: CalculatorModel, private  val view: CalculatorView){
@@ -30,6 +31,14 @@ class  CalculatorPresenter(private  val  model: CalculatorModel, private  val vi
                     view.setText(value.number.toString())
                 }
 
+            })
+
+            // Operation Event
+            RxBus.subscribe(activity,object : OnOperationButtonPressedBusObserver(){
+                override fun onEvent(value: OnOperationButtonPressedBusObserver.OnOperationButtonPressed) {
+
+                    view.setText(value.operation)
+                }
             })
 
         }
