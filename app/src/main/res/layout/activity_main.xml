@@ -7,22 +7,160 @@
     android:orientation="vertical">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/displayTxt"
+        android:textAlignment="viewEnd"
+        android:text="@string/txt_main_activity_starting_count_label_value"
+        android:textSize="40sp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="254dp"
+            android:layout_gravity="center"
+            android:columnCount="3"
+            android:orientation="vertical"
+            android:rowCount="4">
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_numberOne_btn_label" />
+
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_numberTwo_btn_label" />
+
+            <Button
+                android:id="@+id/btn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_numberThree_btn_label" />
+
+
+            <Button
+                android:id="@+id/btn4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_numberFour_btn_label" />
+
+            <Button
+                android:id="@+id/btn5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_numberFive_btn_label" />
+
+            <Button
+                android:id="@+id/btn6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_numberSix_btn_label" />
+
+            <Button
+                android:id="@+id/btn7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_numberSeven_btn_label" />
+
+            <Button
+                android:id="@+id/btn8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_numberEight_btn_label" />
+
+            <Button
+                android:id="@+id/btn9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_numberNine_btn_label" />
+
+            <Button
+                android:id="@+id/btn0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_numberCero_btn_label" />
+
+            <Button
+                android:id="@+id/dotBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_dot_btn_label" />
+
+            <Button
+                android:id="@+id/equalsBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_equals_btn_label" />
+
+        </GridLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/buttonC"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_resetCalc_btn_label" />
+
+            <Button
+                android:id="@+id/divBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_operationDivide_btn_label" />
+
+            <Button
+                android:id="@+id/multiplyBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_operationMultiplay_btn_label" />
+
+            <Button
+                android:id="@+id/substractBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_operationSubstract_btn_label" />
+
+            <Button
+                android:id="@+id/addBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/txt_main_activity_operation_add_btn_label" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
         android:id="@+id/countLabel"
-        android:layout_width="wrap_content"
+        android:layout_width="43dp"
         android:layout_height="wrap_content"
         android:text="@string/txt_main_activity_starting_count_label_value"
         android:textSize="40sp" />
 
     <Button
         android:id="@+id/countBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="77dp"
+        android:layout_height="35dp"
         android:text="@string/txt_main_activity_count_btn_label" />
 
     <Button
         android:id="@+id/resetBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="35dp"
         android:text="@string/txt_main_activity_reset_btn_label" />
 
 </LinearLayout>
+

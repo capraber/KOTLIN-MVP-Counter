@@ -3,4 +3,22 @@
     <string name="txt_main_activity_starting_count_label_value">0</string>
     <string name="txt_main_activity_count_btn_label">inc</string>
     <string name="txt_main_activity_reset_btn_label">reset</string>
+    <string name="btn_main_activity_numberOne_btn_label">1</string>
+    <string name="txt_main_activity_numberTwo_btn_label">2</string>
+    <string name="txt_main_activity_numberOne_btn_label">1</string>
+    <string name="txt_main_activity_numberThree_btn_label">3</string>
+    <string name="txt_main_activity_numberFour_btn_label">4</string>
+    <string name="txt_main_activity_numberFive_btn_label">5</string>
+    <string name="txt_main_activity_numberSix_btn_label">6</string>
+    <string name="txt_main_activity_numberSeven_btn_label">7</string>
+    <string name="txt_main_activity_numberEight_btn_label">8</string>
+    <string name="txt_main_activity_numberNine_btn_label">9</string>
+    <string name="txt_main_activity_numberCero_btn_label">0</string>
+    <string name="txt_main_activity_dot_btn_label">.</string>
+    <string name="txt_main_activity_equals_btn_label">=</string>
+    <string name="txt_main_activity_resetCalc_btn_label">C</string>
+    <string name="txt_main_activity_operationDivide_btn_label">/</string>
+    <string name="txt_main_activity_operationMultiplay_btn_label">x</string>
+    <string name="txt_main_activity_operationSubstract_btn_label">-</string>
+    <string name="txt_main_activity_operation_add_btn_label">+</string>
 </resources>
