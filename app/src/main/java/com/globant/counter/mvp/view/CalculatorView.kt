@@ -1,8 +1,9 @@
 package com.globant.counter.mvp.view
 
 import android.app.Activity
+import android.view.View
 import com.globant.counter.rx.*
-import com.globant.counter.utils.RxBus
+import com.globant.counter.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class CalculatorView(activity: Activity) : ActivityView(activity){
@@ -14,12 +15,12 @@ class CalculatorView(activity: Activity) : ActivityView(activity){
 
         // Reset Listener
         activity.buttonC.setOnClickListener {
-            RxBus.post(OnResetButtonPressedBusObserver.OnResetButtonPressed(""))
+            RxBus.post(OnResetButtonPressedBusObserver.OnResetButtonPressed(OpertaionSymbols.EMPTY.symbol))
         }
 
         // Dot Listener
         activity.dotBtn.setOnClickListener {
-            RxBus.post(OnDotButtonPressedBusObserver.OnDotButtonPressed("."))
+            RxBus.post(OnDotButtonPressedBusObserver.OnDotButtonPressed(OpertaionSymbols.DOT.symbol))
         }
 
         // Number Listener
@@ -57,16 +58,16 @@ class CalculatorView(activity: Activity) : ActivityView(activity){
 
         // Opertaion Listeners
         activity.addBtn.setOnClickListener {
-            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed("+"))
+            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed(AddOpertaion()))
         }
         activity.substractBtn.setOnClickListener {
-            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed("-"))
+            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed(SubstractOpertaion()))
         }
         activity.divBtn.setOnClickListener {
-            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed("/"))
+            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed(DivideOpertaion()))
         }
         activity.multiplyBtn.setOnClickListener {
-            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed("x"))
+            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed(MultipyOpertaion()))
         }
 
 
@@ -75,5 +76,6 @@ class CalculatorView(activity: Activity) : ActivityView(activity){
     fun setText(number: String){
         activity!!.displayTxt.text=number
     }
+
 
 }
