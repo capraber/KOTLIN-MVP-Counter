@@ -1,9 +1,7 @@
 package com.globant.counter.mvp.view
 
 import android.app.Activity
-import com.globant.counter.rx.OnEqualsButtonPressedBusObserver
-import com.globant.counter.rx.OnNumberButtonPressedBusObserver
-import com.globant.counter.rx.OnOperationButtonPressedBusObserver
+import com.globant.counter.rx.*
 import com.globant.counter.utils.RxBus
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -12,6 +10,16 @@ class CalculatorView(activity: Activity) : ActivityView(activity){
         // Equals Listener
         activity.equalsBtn.setOnClickListener {
             RxBus.post(OnEqualsButtonPressedBusObserver.OnEqualsButtonPressed())
+        }
+
+        // Reset Listener
+        activity.buttonC.setOnClickListener {
+            RxBus.post(OnResetButtonPressedBusObserver.OnResetButtonPressed(""))
+        }
+
+        // Dot Listener
+        activity.dotBtn.setOnClickListener {
+            RxBus.post(OnDotButtonPressedBusObserver.OnDotButtonPressed("."))
         }
 
         // Number Listener
@@ -46,6 +54,7 @@ class CalculatorView(activity: Activity) : ActivityView(activity){
             RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(9))
         }
 
+
         // Opertaion Listeners
         activity.addBtn.setOnClickListener {
             RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed("+"))
@@ -57,7 +66,7 @@ class CalculatorView(activity: Activity) : ActivityView(activity){
             RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed("/"))
         }
         activity.multiplyBtn.setOnClickListener {
-            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed("+"))
+            RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed("x"))
         }
 
 

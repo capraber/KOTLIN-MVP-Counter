@@ -3,9 +3,7 @@ package com.globant.counter.mvp.presenter
 import android.util.Log
 import com.globant.counter.mvp.model.CalculatorModel
 import com.globant.counter.mvp.view.CalculatorView
-import com.globant.counter.rx.OnEqualsButtonPressedBusObserver
-import com.globant.counter.rx.OnNumberButtonPressedBusObserver
-import com.globant.counter.rx.OnOperationButtonPressedBusObserver
+import com.globant.counter.rx.*
 import com.globant.counter.utils.RxBus
 
 class  CalculatorPresenter(private  val  model: CalculatorModel, private  val view: CalculatorView){
@@ -13,6 +11,21 @@ class  CalculatorPresenter(private  val  model: CalculatorModel, private  val vi
     init {
         val activity =view.activity;
         if (activity!=null){
+
+            // Dot Event
+            RxBus.subscribe(activity,object : OnDotButtonPressedBusObserver(){
+                override fun onEvent(value: OnDotButtonPressed) {
+
+                    view.setText(value.dot)
+                }
+            })
+
+            //Reset Event
+            RxBus.subscribe(activity,object : OnResetButtonPressedBusObserver(){
+                override fun onEvent(value: OnResetButtonPressed) {
+                   view.setText(value.reset)
+                }
+            })
 
 
             // Equals event
