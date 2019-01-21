@@ -2,6 +2,7 @@ package com.globant.counter.mvp.view
 
 import android.app.Activity
 import android.view.View
+import android.widget.Toast
 import com.globant.counter.rx.*
 import com.globant.counter.utils.*
 import kotlinx.android.synthetic.main.activity_main.*
@@ -76,6 +77,20 @@ class CalculatorView(activity: Activity) : ActivityView(activity){
     fun setText(number: String){
         activity!!.displayTxt.text=number
     }
+    fun appendText(number: String){
+        activity!!.displayTxt.append(number)
+    }
+
+    fun resetText(){
+        activity!!.displayTxt.text=OpertaionSymbols.EMPTY.symbol
+    }
+    fun getText(): String{
+        return activity!!.displayTxt.text.toString()
+    }
+    fun showToast(text: String){
+        Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
+    }
+
 
 
 }

@@ -18,7 +18,7 @@ class  CalculatorPresenter(private  val  model: CalculatorModel, private  val vi
             RxBus.subscribe(activity,object : OnDotButtonPressedBusObserver(){
                 override fun onEvent(value: OnDotButtonPressed) {
 
-                    view.setText(value.dot)
+                    view.appendText(value.dot)
                 }
             })
 
@@ -27,7 +27,7 @@ class  CalculatorPresenter(private  val  model: CalculatorModel, private  val vi
                 override fun onEvent(value: OnResetButtonPressed) {
 
                    model.reset()
-                   view.setText(value.reset)
+                   view.resetText()
                 }
             })
 
@@ -36,9 +36,13 @@ class  CalculatorPresenter(private  val  model: CalculatorModel, private  val vi
             RxBus.subscribe(activity, object : OnEqualsButtonPressedBusObserver() {
                 override fun onEvent(value: OnEqualsButtonPressed) {
 
+                    model.secondValue=view.getText()
                     model.calculate()
-                    view.setText("=")
-                    Log.v("Equals test","Number1 ${model.firstValue} ${model.operation?.operationSymbol}")
+                    view.setText(model.calculate())
+
+                    model.reset()
+
+                    //view.showToast("Insert second number")
 
                 }
             })
@@ -47,19 +51,31 @@ class  CalculatorPresenter(private  val  model: CalculatorModel, private  val vi
             RxBus.subscribe(activity,object  : OnNumberButtonPressedBusObserver(){
                 override fun onEvent(value: OnNumberButtonPressed) {
 
-                    model.firstValue=value.number.toDouble()
-                    view.setText(value.number.toString())
+                    //model.calculation?.add(value.number.toString())
+                    if(model.operation!=null){
+                        view.resetText()
+                    }
+                    view.appendText(value.number.toString())
                 }
-
             })
 
             // IOperation Event
             RxBus.subscribe(activity,object : OnOperationButtonPressedBusObserver(){
                 override fun onEvent(value: OnOperationButtonPressedBusObserver.OnOperationButtonPressed) {
 
-                    view.setText(value.operation.operationSymbol)
-                    model.operation=value.operation
-                    Log.v("Model Test","Operation from model is "+ model.operation?.operationSymbol)
+                    if(view.getText().isEmpty() || model.operation!=null){
+
+                        view.showToast("Must select one number first")
+
+                    }else {
+                        model.firstValue=view.getText()
+
+                        model.operation = value.operation
+                        view.setText(value.operation.operationSymbol)
+
+                        Log.v("Model Test", "Operation from model is ${model.firstValue}" +
+                                " ${model.operation?.operationSymbol}")
+                    }
                 }
             })
 

@@ -2,35 +2,31 @@ package com.globant.counter.mvp.model
 
 import android.util.Log
 import com.globant.counter.utils.IOperation
+import com.globant.counter.utils.OpertaionSymbols
 
 class  CalculatorModel{
 
-    var firstValue: Double = 0.0
-    var secondValue: Double = 0.0
+    var firstValue: String = ""
+    var secondValue: String = ""
     var operation: IOperation? = null
+    var result: Double? = 0.0
 
     var operationSelected: Boolean = false
 
-    fun addValue(number: Number){
-        if(operation==null){
-            firstValue=number.toDouble()
 
-        }
-
-    }
 
     fun reset(){
-        firstValue=0.0
-        secondValue=0.0
+        firstValue= OpertaionSymbols.EMPTY.toString()
+        secondValue=OpertaionSymbols.EMPTY.toString()
         operation=null
     }
 
 
 
-    fun calculate(){
+    fun calculate(): String{
+        result= operation?.operate(firstValue.toDouble(),secondValue.toDouble())
 
-        Log.v("Equals calculation","Equals was correctly pressed")
-        operation?.operate(firstValue, secondValue)
+        return result.toString()
     }
 
 
