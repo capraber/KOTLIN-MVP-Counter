@@ -12,6 +12,8 @@ class  CalculatorPresenter(private  val  model: CalculatorModel, private  val vi
 
     init {
         val activity =view.activity;
+        var isSecondValueTime=false
+
         if (activity!=null){
 
             // Dot Event
@@ -28,6 +30,7 @@ class  CalculatorPresenter(private  val  model: CalculatorModel, private  val vi
 
                    model.reset()
                    view.resetText()
+                    isSecondValueTime=false
                 }
             })
 
@@ -52,8 +55,9 @@ class  CalculatorPresenter(private  val  model: CalculatorModel, private  val vi
                 override fun onEvent(value: OnNumberButtonPressed) {
 
                     //model.calculation?.add(value.number.toString())
-                    if(model.operation!=null){
+                    if(model.operation!=null && isSecondValueTime){
                         view.resetText()
+                        isSecondValueTime=false
                     }
                     view.appendText(value.number.toString())
                 }
@@ -71,6 +75,7 @@ class  CalculatorPresenter(private  val  model: CalculatorModel, private  val vi
                         model.firstValue=view.getText()
 
                         model.operation = value.operation
+                        isSecondValueTime=true
                         view.setText(value.operation.operationSymbol)
 
                         Log.v("Model Test", "Operation from model is ${model.firstValue}" +
