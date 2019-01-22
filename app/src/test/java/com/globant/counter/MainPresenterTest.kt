@@ -1,15 +1,24 @@
 package com.globant.counter
 
+import android.test.MoreAsserts.assertEquals
+import com.globant.counter.mvp.model.CalculatorModel
 import com.globant.counter.mvp.model.CountModel
+import com.globant.counter.mvp.presenter.CalculatorPresenter
 import com.globant.counter.mvp.presenter.CountPresenter
+import com.globant.counter.mvp.view.CalculatorView
 import com.globant.counter.mvp.view.CountView
 import com.globant.counter.rx.EventTypes
 import com.globant.counter.rx.EventTypes.RESET_COUNT_EVENT
+import com.globant.counter.rx.OnNumberButtonPressedBusObserver
+import com.globant.counter.rx.OnOperationButtonPressedBusObserver
+import com.globant.counter.utils.AddOpertaion
+import com.globant.counter.utils.RxBus
 import io.reactivex.Observable
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
 import org.mockito.Mockito.*
+import org.junit.Assert.assertEquals
 import org.mockito.MockitoAnnotations
 import org.mockito.Mockito.`when` as whenever
 
@@ -23,14 +32,41 @@ class PresenterTest {
     @Mock
     lateinit var activity: MainActivity
 
+
+    private var mPresenter: CalculatorPresenter? = null
+    @Mock
+    lateinit var mModel: CalculatorModel // Mocking the model is to illustrate a non-trivial model
+    @Mock
+    lateinit var mView: CalculatorView
+    @Mock
+    lateinit var mActivity: MainActivity
+
+
+
     @Before
     fun setup() {
+
         MockitoAnnotations.initMocks(this)
         // When
-        whenever(view.activity).thenReturn(activity)
+        whenever(mView.activity).thenReturn(mActivity)
 
-        presenter = CountPresenter(model, view)
+        mPresenter = CalculatorPresenter(mModel, mView)
     }
+
+
+
+    @Test
+    fun isShouldSetFirstValue() {
+
+        // mModel.reset()
+        RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(8))
+        // RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed(AddOpertaion()))
+
+        // mModel.setfirstValue("8")
+        assertEquals("8", mModel.firstValue)
+        verify(mView).setText("8")
+    }
+
 
     @Test
     fun isShouldIncCountByOne() {

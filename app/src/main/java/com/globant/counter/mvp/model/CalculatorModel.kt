@@ -7,6 +7,7 @@ import com.globant.counter.utils.OpertaionSymbols
 class  CalculatorModel{
 
     var firstValue: String = ""
+
     var secondValue: String = ""
     var operation: IOperation? = null
     var result: Double? = 0.0
@@ -15,6 +16,9 @@ class  CalculatorModel{
 
 
 
+    fun setfirstValue(value: String){
+        firstValue=value
+    }
     fun reset(){
         firstValue= OpertaionSymbols.EMPTY.toString()
         secondValue=OpertaionSymbols.EMPTY.toString()
