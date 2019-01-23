@@ -10,64 +10,64 @@ import kotlinx.android.synthetic.main.activity_main.*
 class CalculatorView(activity: Activity) : ActivityView(activity){
     init {
         // Equals Listener
-        activity.equalsBtn.setOnClickListener {
+        activity.button_equals.setOnClickListener {
             RxBus.post(OnEqualsButtonPressedBusObserver.OnEqualsButtonPressed())
         }
 
         // Reset Listener
-        activity.buttonC.setOnClickListener {
-            RxBus.post(OnResetButtonPressedBusObserver.OnResetButtonPressed(OpertaionSymbols.EMPTY.symbol))
+        activity.button_reset.setOnClickListener {
+            RxBus.post(OnResetButtonPressedBusObserver.OnResetButtonPressed())
         }
 
         // Dot Listener
-        activity.dotBtn.setOnClickListener {
+        activity.button_dot.setOnClickListener {
             RxBus.post(OnDotButtonPressedBusObserver.OnDotButtonPressed(OpertaionSymbols.DOT.symbol))
         }
 
         // Number Listener
-        activity.btn0.setOnClickListener {
+        activity.button_cero.setOnClickListener {
             RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(0))
         }
-        activity.btn1.setOnClickListener {
+        activity.button_one.setOnClickListener {
             RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(1))
         }
-        activity.btn2.setOnClickListener {
+        activity.button_two.setOnClickListener {
             RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(2))
         }
-        activity.btn3.setOnClickListener {
+        activity.button_three.setOnClickListener {
             RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(3))
         }
-        activity.btn4.setOnClickListener {
+        activity.button_four.setOnClickListener {
             RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(4))
         }
-        activity.btn5.setOnClickListener {
+        activity.button_five.setOnClickListener {
             RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(5))
         }
-        activity.btn6.setOnClickListener {
+        activity.button_six.setOnClickListener {
             RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(6))
         }
-        activity.btn7.setOnClickListener {
+        activity.button_seven.setOnClickListener {
             RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(7))
         }
-        activity.btn8.setOnClickListener {
+        activity.button_eight.setOnClickListener {
             RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(8))
         }
-        activity.btn9.setOnClickListener {
+        activity.button_nine.setOnClickListener {
             RxBus.post(OnNumberButtonPressedBusObserver.OnNumberButtonPressed(9))
         }
 
 
         // Opertaion Listeners
-        activity.addBtn.setOnClickListener {
+        activity.button_addition.setOnClickListener {
             RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed(AddOpertaion()))
         }
-        activity.substractBtn.setOnClickListener {
+        activity.button_subtraction.setOnClickListener {
             RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed(SubstractOpertaion()))
         }
-        activity.divBtn.setOnClickListener {
+        activity.button_division.setOnClickListener {
             RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed(DivideOpertaion()))
         }
-        activity.multiplyBtn.setOnClickListener {
+        activity.button_multiplication.setOnClickListener {
             RxBus.post(OnOperationButtonPressedBusObserver.OnOperationButtonPressed(MultipyOpertaion()))
         }
 
@@ -75,17 +75,17 @@ class CalculatorView(activity: Activity) : ActivityView(activity){
     }
 
     fun setText(number: String){
-        activity!!.displayTxt.text=number
+        activity!!.text_display.text=number
     }
     fun appendText(number: String){
-        activity!!.displayTxt.append(number)
+        activity!!.text_display.append(number)
     }
 
     fun resetText(){
-        activity!!.displayTxt.text=OpertaionSymbols.EMPTY.symbol
+        activity!!.text_display.text=OpertaionSymbols.EMPTY.symbol
     }
     fun getText(): String{
-        return activity!!.displayTxt.text.toString()
+        return activity!!.text_display.text.toString()
     }
     fun showToast(text: String){
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
