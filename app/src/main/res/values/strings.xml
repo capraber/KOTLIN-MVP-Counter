@@ -1,6 +1,23 @@
 <resources>
-    <string name="app_name">Counter</string>
+    <string name="app_name">Calculator</string>
     <string name="txt_main_activity_starting_count_label_value">0</string>
     <string name="txt_main_activity_count_btn_label">inc</string>
     <string name="txt_main_activity_reset_btn_label">reset</string>
+
+    <string name="txt_main_activity_zero_btn_label">0</string>
+    <string name="txt_main_activity_one_btn_label">1</string>
+    <string name="txt_main_activity_two_btn_label">2</string>
+    <string name="txt_main_activity_three_btn_label">3</string>
+    <string name="txt_main_activity_four_btn_label">4</string>
+    <string name="txt_main_activity_five_btn_label">5</string>
+    <string name="txt_main_activity_six_btn_label">6</string>
+    <string name="txt_main_activity_seven_btn_label">7</string>
+    <string name="txt_main_activity_eight_btn_label">8</string>
+    <string name="txt_main_activity_nine_btn_label">9</string>
+    <string name="txt_main_activity_plus_btn_label">+</string>
+    <string name="txt_main_activity_minus_btn_label">-</string>
+    <string name="txt_main_activity_times_btn_label">*</string>
+    <string name="txt_main_activity_divide_btn_label">/</string>
+    <string name="txt_main_activity_clear_btn_label">C</string>
+    <string name="txt_main_activity_equals_btn_label">=</string>
 </resources>
