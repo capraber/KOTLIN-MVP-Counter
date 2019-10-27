@@ -6,30 +6,6 @@
     android:gravity="center"
     android:orientation="vertical">
 
-
-    <TextView
-        android:id="@+id/countLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_main_activity_starting_count_label_value"
-        android:textSize="40sp"
-        android:visibility="gone"/>
-
-    <Button
-        android:id="@+id/countBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_main_activity_count_btn_label"
-        android:visibility="gone"/>
-
-    <Button
-        android:id="@+id/resetBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_main_activity_reset_btn_label"
-        android:visibility="gone"/>
-
-
     <TextView
         android:id="@+id/displayLabel"
         android:layout_width="wrap_content"
@@ -181,9 +157,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/txt_main_activity_equals_btn_label" />
-
-
-
 
     </LinearLayout>
 
