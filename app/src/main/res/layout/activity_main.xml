@@ -6,23 +6,185 @@
     android:gravity="center"
     android:orientation="vertical">
 
+
     <TextView
         android:id="@+id/countLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/txt_main_activity_starting_count_label_value"
-        android:textSize="40sp" />
+        android:textSize="40sp"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/countBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txt_main_activity_count_btn_label" />
+        android:text="@string/txt_main_activity_count_btn_label"
+        android:visibility="gone"/>
 
     <Button
         android:id="@+id/resetBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txt_main_activity_reset_btn_label" />
+        android:text="@string/txt_main_activity_reset_btn_label"
+        android:visibility="gone"/>
+
+
+    <TextView
+        android:id="@+id/displayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="0"
+        android:textSize="40sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/addBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_add_btn_label" />
+
+        <Button
+            android:id="@+id/subBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_sub_btn_label" />
+
+        <Button
+            android:id="@+id/multBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_mult_btn_label" />
+
+        <Button
+            android:id="@+id/divBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_div_btn_label" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/powBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_pow_btn_label" />
+
+        <Button
+            android:id="@+id/complementBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_complement_btn_label" />
+
+        <Button
+            android:id="@+id/zeroBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_zero_btn_label" />
+
+        <Button
+            android:id="@+id/oneBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_one_btn_label" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/twoBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_two_btn_label" />
+
+        <Button
+            android:id="@+id/threeBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_three_btn_label" />
+
+        <Button
+            android:id="@+id/fourBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_four_btn_label" />
+
+        <Button
+            android:id="@+id/fiveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_five_btn_label" />
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/sixBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_six_btn_label" />
+
+        <Button
+            android:id="@+id/sevenBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_seven_btn_label" />
+
+        <Button
+            android:id="@+id/eigthBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_eight_btn_label" />
+
+        <Button
+            android:id="@+id/nineBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_nine_btn_label" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/clearBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_clear_btn_label" />
+
+        <Button
+            android:id="@+id/equalsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_main_activity_equals_btn_label" />
+
+
+
+
+    </LinearLayout>
 
 </LinearLayout>

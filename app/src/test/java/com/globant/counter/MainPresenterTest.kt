@@ -1,8 +1,8 @@
 package com.globant.counter
 
-import com.globant.counter.mvp.model.CountModel
-import com.globant.counter.mvp.presenter.CountPresenter
-import com.globant.counter.mvp.view.CountView
+import com.globant.counter.mvp.model.CalculatorModel
+import com.globant.counter.mvp.presenter.CalculatorPresenter
+import com.globant.counter.mvp.view.CalculatorView
 import com.globant.counter.rx.EventTypes
 import com.globant.counter.rx.EventTypes.RESET_COUNT_EVENT
 import io.reactivex.Observable
@@ -15,11 +15,11 @@ import org.mockito.Mockito.`when` as whenever
 
 class PresenterTest {
 
-    private var presenter: CountPresenter? = null
+    private var presenter: CalculatorPresenter? = null
     @Mock
-    lateinit var model: CountModel // Mocking the model is to illustrate a non-trivial model
+    lateinit var model: CalculatorModel // Mocking the model is to illustrate a non-trivial model
     @Mock
-    lateinit var view: CountView
+    lateinit var view: CalculatorView
     @Mock
     lateinit var activity: MainActivity
 
@@ -29,7 +29,7 @@ class PresenterTest {
         // When
         whenever(view.activity).thenReturn(activity)
 
-        presenter = CountPresenter(model, view)
+        presenter = CalculatorPresenter(model, view)
     }
 
     @Test
