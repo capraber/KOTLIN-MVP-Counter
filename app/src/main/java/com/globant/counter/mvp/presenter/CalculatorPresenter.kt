@@ -85,7 +85,7 @@ class CalculatorPresenter(private val model: CalculatorModel, val view: Calculat
                     }
                     EQUALS_VALUE_EVENT -> {
 
-                        if(model.verifyDataEntered()){
+                        if(model.verifyDataEntered(model.valueDisplayed)){
                             model.calculateOperation()
                         }else{
                             view.showToast()

@@ -52,7 +52,7 @@ class CalculatorModel {
     }
 
 
-    fun verifyDataEntered():Boolean {
+    fun verifyDataEntered(valueDisplayed: String):Boolean {
         val generalPattern = "[0-9]+[^0-9][0-9]+".toRegex()
         if(valueDisplayed.matches(generalPattern)){
             return true
