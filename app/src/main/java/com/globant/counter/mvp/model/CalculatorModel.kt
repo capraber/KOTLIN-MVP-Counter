@@ -3,38 +3,29 @@ package com.globant.counter.mvp.model
 class CalculatorModel {
     private var digitList = mutableListOf<Int>()
 
-    private var operatorsList = mutableListOf<String>()
+    var digit1 = 0.0;
+
+    var digit2 = 0.0;
+
+    var operator = ""
 
     var valueDisplayed = ""
         private set
 
     fun updateValueDisplayed(value: String) {
         valueDisplayed += value
-        val pattern = "\\d+".toRegex()
-        if(!value.matches(pattern)){
-            operatorsList.add(value)
-        }
     }
 
     fun clearValues() {
         valueDisplayed = ""
+        operator = ""
+        digit1 = 0.0
+        digit2 = 0.0
         digitList.clear()
-        operatorsList.clear()
     }
 
-    fun calculateOperation() {
+    fun calculateOperation(d1: Double, d2: Double, operator: String) {
         var total  = 0.0
-        val pattern = "\\d+".toRegex()
-        val found = pattern.findAll(valueDisplayed)
-       found.forEach { f ->
-            val d= f.value.toInt()
-            digitList.add(d)
-        }
-
-        if(digitList.size >= 2) {
-            val d1 = (digitList[digitList.size-2]).toDouble()
-            val d2 =  (digitList[digitList.size-1]).toDouble()
-            val operator = operatorsList[operatorsList.size-1]
             when(operator) {
                 "+" -> total = d1.plus(d2)
                 "-" -> total = d1.minus(d2)
@@ -44,7 +35,7 @@ class CalculatorModel {
                 "~" -> total = d2.times(-1)
                 else -> clearValues()
             }
-        }
+
 
         clearValues()
         valueDisplayed = total.toString()
@@ -58,6 +49,23 @@ class CalculatorModel {
             return true
         }
         return false
+    }
+
+    fun saveOperator(op: String) {
+        operator = op
+    }
+
+
+    fun obtainDigitsEntered(valueDisplayed: String) {
+        val pattern = "\\d+".toRegex()
+        val found = pattern.findAll(valueDisplayed)
+        found.forEach { f ->
+            val d = f.value.toInt()
+            digitList.add(d)
+        }
+
+        digit1 = digitList[digitList.size-2].toDouble()
+        digit2 = digitList[digitList.size-1].toDouble()
     }
 
 }

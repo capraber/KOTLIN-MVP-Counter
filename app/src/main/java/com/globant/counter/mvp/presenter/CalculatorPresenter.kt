@@ -33,77 +33,76 @@ class CalculatorPresenter(private val model: CalculatorModel, val view: Calculat
     fun initPresenter() {
 
         compositeDisposable.add(
-            view.viewEventObservable.subscribe { clickEvent ->
-                when (clickEvent) {
-                    ZERO_VALUE_EVENT -> {
-                        model.updateValueDisplayed("0")
-                    }
-                    ONE_VALUE_EVENT -> {
-                        model.updateValueDisplayed( "1")
-                    }
-                    TWO_VALUE_EVENT -> {
-                        model.updateValueDisplayed("2")
-                    }
-                    THREE_VALUE_EVENT -> {
-                        model.updateValueDisplayed("3")
-                    }
-                    FOUR_VALUE_EVENT -> {
-                        model.updateValueDisplayed("4")
-                    }
-                    FIVE_VALUE_EVENT -> {
-                        model.updateValueDisplayed("5")
-                    }
-                    SIX_VALUE_EVENT -> {
-                        model.updateValueDisplayed("6")
-                    }
-                    SEVEN_VALUE_EVENT -> {
-                        model.updateValueDisplayed("7")
-                    }
-                    EIGHT_VALUE_EVENT -> {
-                        model.updateValueDisplayed("8")
-                    }
-                    NINE_VALUE_EVENT -> {
-                        model.updateValueDisplayed("9")
-                    }
-                    ADDITION_VALUE_EVENT -> {
-                        model.updateValueDisplayed("+")
-                    }
-                    SUBTRACTION_VALUE_EVENT -> {
-                        model.updateValueDisplayed("-")
-                    }
-                    MULTIPLICATION_VALUE_EVENT -> {
-                        model.updateValueDisplayed("x")
-                    }
-                    DIVISION_VALUE_EVENT -> {
-                        model.updateValueDisplayed("/")
-                    }
-                    COMPLEMENT_VALUE_EVENT -> {
-                        model.updateValueDisplayed("~")
-                    }
-                    POWER_VALUE_EVENT -> {
-                        model.updateValueDisplayed("^")
-                    }
-                    EQUALS_VALUE_EVENT -> {
+                view.viewEventObservable.subscribe { clickEvent ->
+                    when (clickEvent) {
+                        ZERO_VALUE_EVENT
+                        , ONE_VALUE_EVENT
+                        , TWO_VALUE_EVENT
+                        , THREE_VALUE_EVENT
+                        , FOUR_VALUE_EVENT
+                        , FIVE_VALUE_EVENT
+                        , SIX_VALUE_EVENT
+                        , SEVEN_VALUE_EVENT
+                        , EIGHT_VALUE_EVENT
+                        , NINE_VALUE_EVENT -> {
+                            updateNumberValue(clickEvent.toString())
+                        }
+                        ADDITION_VALUE_EVENT -> {
+                            updateOperatorValue("+")
+                        }
+                        SUBTRACTION_VALUE_EVENT -> {
+                            updateOperatorValue("-")
+                        }
+                        MULTIPLICATION_VALUE_EVENT -> {
+                            updateOperatorValue("x")
+                        }
+                        DIVISION_VALUE_EVENT -> {
+                            updateOperatorValue("/")
+                        }
+                        COMPLEMENT_VALUE_EVENT -> {
+                            updateOperatorValue("~")
 
-                        if(model.verifyDataEntered(model.valueDisplayed)){
-                            model.calculateOperation()
-                        }else{
-                            view.showToast()
+                        }
+                        POWER_VALUE_EVENT -> {
+                            updateOperatorValue("^")
+                        }
+                        EQUALS_VALUE_EVENT -> {
+                            if(model.verifyDataEntered(model.valueDisplayed)){
+                                model.obtainDigitsEntered(model.valueDisplayed)
+                                model.calculateOperation(model.digit1,
+                                        model.digit2, model.operator)
+                            }else{
+                                view.showToast()
+                                model.clearValues()
+                            }
+                        }
+                        CLEAR_DISPLAY_EVENT -> {
                             model.clearValues()
+
                         }
                     }
-                    CLEAR_DISPLAY_EVENT -> {
-                        model.clearValues()
+                    view.showDataEntered(model.valueDisplayed)
 
-                    }
                 }
-                view.showDataEntered(model.valueDisplayed)
-
-            }
         )
     }
 
     fun disposeObservers() {
         compositeDisposable.clear()
     }
+
+    private fun updateOperatorValue(value: String){
+        if(model.valueDisplayed.length <= 9){
+            model.updateValueDisplayed(value)
+            model.saveOperator(value)
+        }
+
+    }
+
+    private fun updateNumberValue(value :String){
+        if(model.valueDisplayed.length <=9)
+             model.updateValueDisplayed(value)
+    }
+
+
 }
