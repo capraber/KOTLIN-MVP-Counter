@@ -11,6 +11,7 @@ import com.globant.counter.rx.EventTypes.SUBTRACTION_VALUE_EVENT
 import com.globant.counter.rx.EventTypes.THREE_VALUE_EVENT
 //import com.globant.counter.rx.EventTypes.RESET_COUNT_EVENT
 import io.reactivex.Observable
+import junit.framework.Assert
 import org.junit.Before
 import org.junit.Test
 import org.mockito.Mock
@@ -40,11 +41,19 @@ class PresenterTest {
 
     @Test
     fun presenterResetValuesTest() {
+        val d1 = 0.0
+        val d2 = 0.0
+        val valueDisplayed = ""
+        whenever(model.valueDisplayed).thenReturn(valueDisplayed)
+        whenever(model.digit1).thenReturn(d1)
+        whenever(model.digit2).thenReturn(d2)
         whenever(view.viewEventObservable).thenReturn(Observable.just(CLEAR_DISPLAY_EVENT))
         presenter?.initPresenter()
         verify(model).clearValues()
-        verify(model).valueDisplayed
+        verify(view).showDataEntered(valueDisplayed)
     }
+
+
 
     @Test
     fun isShouldDisplayData(){
@@ -62,16 +71,12 @@ class PresenterTest {
     @Test
     fun presenterValueWithSumOperatorTest(){
         val valueDisplayed = "3+5"
-
-        val test = true
         whenever(model.valueDisplayed).thenReturn(valueDisplayed)
         whenever(view.viewEventObservable).thenReturn(Observable.just(THREE_VALUE_EVENT))
         whenever(view.viewEventObservable).thenReturn(Observable.just(ADDITION_VALUE_EVENT))
         whenever(view.viewEventObservable).thenReturn(Observable.just(FIVE_VALUE_EVENT))
-
         presenter?.initPresenter()
         verify(view).showDataEntered(valueDisplayed)
-
     }
 
     @Test
@@ -95,5 +100,23 @@ class PresenterTest {
         whenever(view.viewEventObservable).thenReturn(Observable.just(EQUALS_VALUE_EVENT))
         presenter?.initPresenter()
         verify(model).verifyDataEntered(data)
+    }
+
+    @Test
+    fun calculateOperationTest(){
+        val dataTyped = "10+100"
+        whenever(model.verifyDataEntered(dataTyped)).thenReturn(true)
+        whenever(model.valueDisplayed).thenReturn(dataTyped)
+        whenever(model.digit1).thenReturn(10.0)
+        whenever(model.digit2).thenReturn(100.0)
+        whenever(model.operator).thenReturn("+")
+        whenever(view.viewEventObservable).thenReturn(Observable.just(EQUALS_VALUE_EVENT))
+        presenter?.initPresenter()
+        verify(model).calculateOperation(model.digit1, model.digit2, model.operator)
+        Assert.assertEquals(model.digit1, 10.0)
+        Assert.assertEquals(model.digit2, 100.0)
+        Assert.assertEquals(model.operator, "+")
+
+
     }
 }
