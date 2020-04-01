@@ -1,5 +1,5 @@
-# MVPCounter
-Simple MVP example
+# MVVM Counter
+Simple MVVM example
 
 ![alt tag](https://github.com/capraber/KOTLIN-MVP-Counter/blob/master/1.MVP.png)
 
