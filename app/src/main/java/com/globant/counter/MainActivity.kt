@@ -38,7 +38,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUI(it: CounterData?) {
         when (it?.state) {
-            CounterState.INITIAL -> countLabel.text = getString(R.string.txt_main_activity_starting_count_label_value)
+            CounterState.INITIAL -> {
+                countLabel.text = getString(R.string.txt_main_activity_starting_count_label_value)
+                showToast(getString(R.string.main_activity_toast_reset_text))
+            }
             CounterState.INC -> {
                 countLabel.text = it.value.toString()
                 showToast(getString(R.string.main_activity_toast_incremented_text))
