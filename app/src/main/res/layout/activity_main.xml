@@ -14,10 +14,16 @@
         android:textSize="40sp" />
 
     <Button
-        android:id="@+id/countBtn"
+        android:id="@+id/countBtnInc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/txt_main_activity_count_btn_label" />
+        android:text="@string/txt_main_activity_count_inc_btn_label" />
+
+    <Button
+        android:id="@+id/countBtnDec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/txt_main_activity_count_dec_btn_label" />
 
     <Button
         android:id="@+id/resetBtn"

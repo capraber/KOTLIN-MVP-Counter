@@ -1,8 +1,8 @@
 package com.globant.counter
 
-import com.globant.counter.mvp.model.CountModel
-import com.globant.counter.mvp.presenter.CountPresenter
-import com.globant.counter.mvp.view.CountView
+import com.globant.counter.mvvm.model.CountModel
+import com.globant.counter.mvvm.viewmodel.CountPresenter
+import com.globant.counter.mvvm.view.CountView
 import com.globant.counter.rx.EventTypes
 import com.globant.counter.rx.EventTypes.RESET_COUNT_EVENT
 import io.reactivex.Observable

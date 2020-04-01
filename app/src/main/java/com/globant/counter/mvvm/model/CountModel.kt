@@ -1,4 +1,4 @@
-package com.globant.counter.mvp.model
+package com.globant.counter.mvvm.model
 
 class CountModel {
 
@@ -11,6 +11,10 @@ class CountModel {
 
     fun inc() {
         count += 1
+    }
+
+    fun dec() {
+        count -= 1
     }
 
 }
