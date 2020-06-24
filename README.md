@@ -12,3 +12,4 @@ Simple MVP example
 ## Language documentation
 - [KOTLIN References](https://kotlinlang.org/docs/reference/)
 - [KOTLIN Full documentation](https://kotlinlang.org/docs/kotlin-docs.pdf)
+- [Globant Presenter Fisrt documentation](https://docs.google.com/presentation/d/1eLiSih_4EQEjz4hspVXVEGfMrLt7786flZg9me1nbaQ/edit?usp=sharing)
