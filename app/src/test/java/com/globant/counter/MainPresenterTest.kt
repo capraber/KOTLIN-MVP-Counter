@@ -1,58 +1,48 @@
 package com.globant.counter
 
-import com.globant.counter.mvp.model.CountModel
+import com.globant.counter.mvp.CountContract
 import com.globant.counter.mvp.presenter.CountPresenter
-import com.globant.counter.mvp.view.CountView
-import com.globant.counter.rx.EventTypes
-import com.globant.counter.rx.EventTypes.RESET_COUNT_EVENT
-import io.reactivex.Observable
+import com.globant.counter.util.Constants.ONE
+import com.globant.counter.util.Constants.ZERO
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
+import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Before
 import org.junit.Test
-import org.mockito.Mock
-import org.mockito.Mockito.*
-import org.mockito.MockitoAnnotations
-import org.mockito.Mockito.`when` as whenever
+
 
 class PresenterTest {
 
-    private var presenter: CountPresenter? = null
-    @Mock
-    lateinit var model: CountModel // Mocking the model is to illustrate a non-trivial model
-    @Mock
-    lateinit var view: CountView
-    @Mock
-    lateinit var activity: MainActivity
+    private lateinit var presenter: CountContract.Presenter
+    private val model: CountContract.Model = mock()
+    private val view: CountContract.View = mock()
 
     @Before
     fun setup() {
-        MockitoAnnotations.initMocks(this)
-        // When
-        whenever(view.activity).thenReturn(activity)
-
         presenter = CountPresenter(model, view)
     }
 
     @Test
-    fun isShouldIncCountByOne() {
-        val count = 1
-        whenever(model.count).thenReturn(count)
-        whenever(view.viewEventObservable).thenReturn(Observable.just(EventTypes.INCREMENT_EVENT))
-        presenter?.initPresenter()
+    fun `on inc button pressed, the value increments one to the count`() {
+        val count = ONE.toString()
+        whenever(model.getCount()).thenReturn(count)
+
+        presenter.onCountButtonPressed()
 
         verify(model).inc()
-        verify(model).count
-        verify(view).setCount(count.toString())
+        verify(model).getCount()
+        verify(view).setCount(count)
     }
 
     @Test
-    fun presenterResetModelTest() {
-        val countResetValue = 0
-        whenever(model.count).thenReturn(countResetValue)
-        whenever(view.viewEventObservable).thenReturn(Observable.just(RESET_COUNT_EVENT))
+    fun `on reset button pressed, the count value is reset to zero` () {
+        val countResetValue = ZERO.toString()
+        whenever(model.getCount()).thenReturn(countResetValue)
 
-        presenter?.initPresenter()
+        presenter.onResetButtonPressed()
+
         verify(model).reset()
-        verify(model).count
-        verify(view).setCount(countResetValue.toString())
+        verify(model).getCount()
+        verify(view).setCount(countResetValue)
     }
 }

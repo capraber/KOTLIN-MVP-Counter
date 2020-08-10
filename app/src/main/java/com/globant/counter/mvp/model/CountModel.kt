@@ -1,16 +1,21 @@
 package com.globant.counter.mvp.model
 
-class CountModel {
+import com.globant.counter.mvp.CountContract
+import com.globant.counter.util.Constants.ONE
+import com.globant.counter.util.Constants.ZERO
 
-    var count = 0
-        private set
+class CountModel: CountContract.Model {
 
-    fun reset() {
-        count = 0
+    private var count = ZERO
+
+    override fun getCount(): String = count.toString()
+
+    override fun reset() {
+        count = ZERO
     }
 
-    fun inc() {
-        count += 1
+    override fun inc() {
+        count += ONE
     }
 
 }
