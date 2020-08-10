@@ -3,9 +3,9 @@ Simple MVP example
 
 ## MVP-Overview:
    MVP is a user interface architectural pattern engineered to facilitate automated unit testing and improve the separation of concerns in presentation logic:
-        -The model is an interface defining the data to be displayed or otherwise acted upon in the user interface.
-        -The view is a passive interface that displays data (the model) and routes user commands (events) to the presenter to act upon that data.
-        -The presenter acts upon the model and the view. It retrieves data from repositories (the model), and formats it for display in the view.
+        - The model is an interface defining the data to be displayed or otherwise acted upon in the user interface.
+        - The view is a passive interface that displays data (the model) and routes user commands (events) to the presenter to act upon that data.
+        - The presenter acts upon the model and the view. It retrieves data from repositories (the model), and formats it for display in the view.
         
    ![alt tag](https://github.com/capraber/KOTLIN-MVP-Counter/blob/master/1.MVP.png)
 
