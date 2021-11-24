@@ -1,10 +1,10 @@
 package com.globant.counter.mvp.model
 
-import com.globant.counter.mvp.CountContract
+import com.globant.counter.mvp.contract.CountContract
 import com.globant.counter.util.Constants.ONE
 import com.globant.counter.util.Constants.ZERO
 
-class CountModel: CountContract.Model {
+class CountModel : CountContract.Model {
 
     private var count = ZERO
 
@@ -17,5 +17,4 @@ class CountModel: CountContract.Model {
     override fun inc() {
         count += ONE
     }
-
 }

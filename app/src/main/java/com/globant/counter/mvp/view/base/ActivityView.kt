@@ -1,4 +1,4 @@
-package com.globant.counter.mvp.view
+package com.globant.counter.mvp.view.base
 
 import android.app.Activity
 import java.lang.ref.WeakReference
