@@ -1,15 +1,15 @@
 package com.globant.counter
 
-import com.globant.counter.mvp.CountContract
+import com.globant.counter.mvp.contract.CountContract
 import com.globant.counter.mvp.presenter.CountPresenter
 import com.globant.counter.util.Constants.ONE
 import com.globant.counter.util.Constants.ZERO
+import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import org.junit.Before
 import org.junit.Test
-
 
 class PresenterTest {
 
@@ -20,6 +20,9 @@ class PresenterTest {
     @Before
     fun setup() {
         presenter = CountPresenter(model, view)
+
+        verify(view).onCountButtonPressed(any())
+        verify(view).onResetButtonPressed(any())
     }
 
     @Test
@@ -35,7 +38,7 @@ class PresenterTest {
     }
 
     @Test
-    fun `on reset button pressed, the count value is reset to zero` () {
+    fun `on reset button pressed, the count value is reset to zero`() {
         val countResetValue = ZERO.toString()
         whenever(model.getCount()).thenReturn(countResetValue)
 
